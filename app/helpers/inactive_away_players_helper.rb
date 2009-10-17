@@ -1,0 +1,2 @@
+module InactiveAwayPlayersHelper
+end

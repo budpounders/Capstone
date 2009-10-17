@@ -1,0 +1,2 @@
+page[:score].replace_html "<h1>Home Score: #{@game.home_score}   |   Away Score: #{@game.away_score}</h1>"
+page.insert_html :top, :game_log, :partial => 'log_events/log_event', :object => @new_log_event

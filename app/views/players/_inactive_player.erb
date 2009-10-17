@@ -1,0 +1,16 @@
+<% stat = Stat.find(inactive_player.stat_id) %>
+<% inactive_player.table_loc = my_game.table_counter %>
+<% inactive_player.save %>
+<% my_game.table_counter += 1 %>
+<% my_game.save %>
+
+<div id = <%= inactive_player.table_loc %> >
+	<table>
+		<tr>
+			<td><%= Player.find(stat.player_id).name %></td>
+			<td> <span id="free_throw_form">
+				<%= link_to_remote "Activate", :url => [@game, inactive_player], :method => :delete %></span>
+			</td>
+		</tr>
+	</table>
+</div>

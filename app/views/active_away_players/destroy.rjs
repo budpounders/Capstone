@@ -1,0 +1,2 @@
+page[(@active_player.table_loc.to_s).to_sym].remove
+page.insert_html :bottom, :inactive_away_players, :partial => 'players/inactive_player', :object => @new_inactive_away_player, :locals => { :my_game => @game }

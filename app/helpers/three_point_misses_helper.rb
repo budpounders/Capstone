@@ -1,0 +1,2 @@
+module ThreePointMissesHelper
+end

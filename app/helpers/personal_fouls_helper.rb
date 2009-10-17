@@ -1,0 +1,2 @@
+module PersonalFoulsHelper
+end

@@ -1,0 +1,2 @@
+module GameSecondsControllerHelper
+end

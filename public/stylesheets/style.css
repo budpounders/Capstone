@@ -1,0 +1,110 @@
+body {
+  background-color: #666;
+  margin: 15px 25px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+#content {
+  background-color: #fff;
+  border: 10px solid #ccc;
+  padding: 10px 10px 20px 10px;
+}
+
+#notification {
+  border: 5px solid #9c9;
+  background-color: #cfc;
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.fieldWithErrors {
+  border: 5px solid #f66;
+}
+
+#free_throw_count {
+  float: right;
+  color: #9c9;
+}
+
+#free_throw_form {
+  margin: 10px 0;
+}
+
+#free_throw_form input {
+  padding: 3px 5px;
+  border: 3px solid #393;
+  background-color: #cfc;
+  text-decoration: none;
+  color: #393;
+}
+
+#free_throw_form input:hover { 
+  background-color: #aea;
+}
+
+#free_throw_misses_count {
+  float: right;
+  color: #9c9;
+}
+
+#two_point_count {
+  float: right;
+  color: #9c9;
+}
+#two_point_misses_count {
+  float: right;
+  color: #9c9;
+}
+
+#three_point_count {
+  float: right;
+  color: #9c9;
+}
+#three_point_misses_count {
+  float: right;
+  color: #9c9;
+}
+#assists_count {
+  float: right;
+  color: #9c9;
+}
+#o_bounds_count {
+  float: right;
+  color: #9c9;
+}
+#d_bounds_count {
+  float: right;
+  color: #9c9;
+}
+
+#steals_count {
+  float: right;
+  color: #9c9;
+}
+
+#blocks_count {
+  float: right;
+  color: #9c9;
+}
+
+#personal_fouls_count {
+  float: right;
+  color: #9c9;
+}
+
+
+#free_throw_misses_form {
+  margin: 10px 0;
+}
+
+#free_throw_misses_form input {
+  padding: 3px 5px;
+  border: 3px solid #393;
+  background-color: #cfc;
+  text-decoration: none;
+  color: #393;
+}
+
+#free_throw_misses_form input:hover { 
+  background-color: #aea;
+}

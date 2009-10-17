@@ -1,0 +1,291 @@
+<div id = "active_players">
+  <table> <!-- outside table -->
+    <tr>
+      <td>
+					<table> <!-- team 1 table -->
+       			   <tr><td>
+	
+							<div id="home_players"> <!-- home_players -->
+       			   <% i=0 %>
+       			   <% @game.active_home_players.each do | a | %>
+       			   	<% stat = Stat.find(a.stat_id) %>
+								<% a.table_loc = i %>
+								<% a.save %>
+								<% i+=1 %>
+								
+								<%= render :partial => 'stats/statp', :collection => @game.active_home_players, :locals => { :my_game => @game }%>
+								
+								<div id = <%= a.table_loc.to_s %> >
+								<table> <!-- player table -->
+									  <tr>
+											<td><%= a.id %></td>
+									    <td><%= Player.find(stat.player_id).name%></td>
+							        <td>
+		    									<span id="free_throw_form">
+    									      <% form_remote_tag :url=> stat_free_throws_path(stat) do %>
+           									  <%= submit_tag '1PT' %>
+												    <% end %>
+													</span>
+											</td>
+											
+											<td>
+								        <span id="free_throw_form">
+								          <% form_remote_tag :url=> stat_free_throw_misses_path(stat) do %>
+								            <%= submit_tag '1PTM' %>
+								          <% end %>
+								        </span>
+											</td>
+								    	<td>
+								        <span id="free_throw_form">
+								          <% form_remote_tag :url=> stat_two_points_path(stat) do %>
+								            <%= submit_tag '2PT' %>
+								          <% end %>
+								        </span>
+											</td>
+								    	<td>
+								        <span id="free_throw_form">
+								          <% form_remote_tag :url=> stat_two_point_misses_path(stat) do %>
+								            <%= submit_tag '2PTM' %>
+								          <% end %>
+								        </span>
+										  </td>
+								    	<td>
+								        <span id="free_throw_form">
+								          <% form_remote_tag :url=> stat_three_points_path(stat) do %>
+								            <%= submit_tag '3PT' %>
+								          <% end %>
+								        </span>
+										  </td>
+								   		<td>
+								        <span id="free_throw_form">
+								          <% form_remote_tag :url=> stat_three_point_misses_path(stat) do %>
+								            <%= submit_tag '3PTM' %>
+								          <% end %>
+								        </span>
+											</td>
+   								  </tr>
+   								  
+   								  <tr>
+   								     <td></td>
+											 <td>
+								        <span id="free_throw_form">
+								          <% form_remote_tag :url=> stat_assists_path(stat) do %>
+								            <%= submit_tag 'Ast' %>
+								          <% end %>
+								        </span>
+											</td>
+									    <td>
+									        <span id="free_throw_form">
+									          <% form_remote_tag :url=> stat_o_bounds_path(stat) do %>
+									            <%= submit_tag 'ORB' %>
+									          <% end %>
+									        </span>
+											</td>
+									    <td>
+									        <span id="free_throw_form">
+									          <% form_remote_tag :url=> stat_d_bounds_path(stat) do %>
+									            <%= submit_tag 'DRB' %>
+									          <% end %>
+									        </span>
+											</td>
+									    <td>
+									        <span id="free_throw_form">
+									          <% form_remote_tag :url=> stat_steals_path(stat) do %>
+									            <%= submit_tag 'STL' %>
+									          <% end %>
+									        </span>
+											</td>
+									    <td>
+									        <span id="free_throw_form">
+									          <% form_remote_tag :url=> stat_blocks_path(stat) do %>
+									            <%= submit_tag 'BLK' %>
+									          <% end %>
+									        </span>
+											</td>
+									    <td>
+									        <span id="free_throw_form">
+									          <% form_remote_tag :url=> stat_personal_fouls_path(stat) do %>
+									            <%= submit_tag 'PF' %>
+									          <% end %>
+									        </span>
+											</td>
+											<td>
+													<span id="free_throw_form">
+														<%= link_to_remote "Deactivate", :url => [@game, a], :method => :delete %>
+													</span>
+											</td>
+									  </tr>
+
+									</table> <!-- player table -->
+									</div> <!-- table_loc -->
+								<% end %>
+								</div> <!-- home_players -->
+								</td></tr>
+        </table> <!-- team 1 table -->
+      </td>
+      <td>
+         <table> <!-- team 2 table -->
+       			   <tr><td>
+       			   <div id="away_players"> <!-- away_players -->
+       			  <% @game.active_away_players.each do | a | %>
+       			   	<% stat = Stat.find(a.stat_id) %>
+								<% a.table_loc = i %>
+								<% a.save %>
+								<% i+=1 %>
+				
+								<div id = <%= a.table_loc %> >
+
+								<table> <!-- player table -->
+									  <tr>
+									    <td><%= Player.find(stat.player_id).name%></td>
+							        <td>
+		    									<span id="free_throw_form">
+    									      <% form_remote_tag :url=> stat_free_throws_path(stat) do %>
+           									  <%= submit_tag '1PT' %>
+												    <% end %>
+													</span>
+											</td>
+											
+											<td>
+								        <span id="free_throw_form">
+								          <% form_remote_tag :url=> stat_free_throw_misses_path(stat) do %>
+								            <%= submit_tag '1PTM' %>
+								          <% end %>
+								        </span>
+											</td>
+								    	<td>
+								        <span id="free_throw_form">
+								          <% form_remote_tag :url=> stat_two_points_path(stat) do %>
+								            <%= submit_tag '2PT' %>
+								          <% end %>
+								        </span>
+											</td>
+								    	<td>
+								        <span id="free_throw_form">
+								          <% form_remote_tag :url=> stat_two_point_misses_path(stat) do %>
+								            <%= submit_tag '2PTM' %>
+								          <% end %>
+								        </span>
+										  </td>
+								    	<td>
+								        <span id="free_throw_form">
+								          <% form_remote_tag :url=> stat_three_points_path(stat) do %>
+								            <%= submit_tag '3PT' %>
+								          <% end %>
+								        </span>
+										  </td>
+								   		<td>
+								        <span id="free_throw_form">
+								          <% form_remote_tag :url=> stat_three_point_misses_path(stat) do %>
+								            <%= submit_tag '3PTM' %>
+								          <% end %>
+								        </span>
+											</td>
+   								  </tr>
+   								  
+   								  <tr>
+   								     <td></td>
+											 <td>
+								        <span id="free_throw_form">
+								          <% form_remote_tag :url=> stat_assists_path(stat) do %>
+								            <%= submit_tag 'Ast' %>
+								          <% end %>
+								        </span>
+											</td>
+									    <td>
+									        <span id="free_throw_form">
+									          <% form_remote_tag :url=> stat_o_bounds_path(stat) do %>
+									            <%= submit_tag 'ORB' %>
+									          <% end %>
+									        </span>
+											</td>
+									    <td>
+									        <span id="free_throw_form">
+									          <% form_remote_tag :url=> stat_d_bounds_path(stat) do %>
+									            <%= submit_tag 'DRB' %>
+									          <% end %>
+									        </span>
+											</td>
+									    <td>
+									        <span id="free_throw_form">
+									          <% form_remote_tag :url=> stat_steals_path(stat) do %>
+									            <%= submit_tag 'STL' %>
+									          <% end %>
+									        </span>
+											</td>
+									    <td>
+									        <span id="free_throw_form">
+									          <% form_remote_tag :url=> stat_blocks_path(stat) do %>
+									            <%= submit_tag 'BLK' %>
+									          <% end %>
+									        </span>
+											</td>
+									    <td>
+									        <span id="free_throw_form">
+									          <% form_remote_tag :url=> stat_personal_fouls_path(stat) do %>
+									            <%= submit_tag 'PF' %>
+									          <% end %>
+									        </span>
+											</td>
+											<td>
+													<span id="free_throw_form">
+														<%= link_to_remote "Deactivate", :url => [@game, a], :method => :delete %>
+													</span>
+											</td>										
+									  </tr>
+
+									</table> <!-- player table -->
+									</div>
+								<% end %>
+								</div> <!-- away_players -->
+								</td></tr>
+        </table> <!-- team 2 table -->
+      </td>
+ 		</tr>
+  </table> <!-- outside table -->
+</div> <!-- active_players -->
+
+<div id="inactive_players"> <!-- Inactive Players -->
+	<table> 									<!-- inactive players table -->
+		<tr>
+			<td>									<!-- start inactive home players -->
+				<table><tr><td><div id="inactive_home_players">
+  			   <% @game.inactive_home_players.each do | a | %>
+  			   	<% stat = Stat.find(a.stat_id) %>
+						<% a.table_loc = i %>
+						<% a.save %>
+						<% i+=1 %>
+						
+						<div id = <%= a.table_loc %> ><table>
+						<tr>
+							<td><%= Player.find(stat.player_id).name %></td>
+							<td> <span id="free_throw_form">
+								<%= link_to_remote "Activate", :url => [@game, a], :method => :delete %></span>
+							</td>
+						</tr></table>
+						</div>
+					<% end %>
+				</div></td></tr></table>
+			</td>								<!-- end of inactive home players -->
+			<td>									<!-- start inactive away players -->
+				<table><tr><td><div id="inactive_away_players">
+  			   <% @game.inactive_away_players.each do | a | %>
+  			   	<% stat = Stat.find(a.stat_id) %>
+						<% a.table_loc = i %>
+						<% a.save %>
+						<% i+=1 %>
+						
+						<div id = <%= a.table_loc %> ><table>
+						<tr>
+							<td><%= Player.find(stat.player_id).name %></td>
+							<td> <span id="free_throw_form">
+								<%= link_to_remote "Activate", :url => [@game, a], :method => :delete %></span>
+							</td>
+						</tr></table>
+						</div>
+					<% end %>
+				</div></td></tr></table>
+			</td>								<!-- end of inactive away players -->
+		</tr>	
+	</table>								<!-- inactive players table -->
+</div>										<!-- inactive players -->

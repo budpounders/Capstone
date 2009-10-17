@@ -1,0 +1,92 @@
+<script type="text/javascript">
+	var clock=false;
+</script>
+
+<%= @game.clock_active %>
+
+<div id = "clock">
+	<div id="clock_time">
+		<%= (@game.game_seconds.length / 60).to_s + ':' + (@game.game_seconds.length % 60).to_s %>
+	</div>
+	
+	<% temp = @game.clock_active %>
+	<%= periodically_call_remote ( :update=>"", :url=>game_game_seconds_path(@game), :frequency=>1, :method=> :post, :condition=>"clock==true") %>
+		
+	<span id="free_throw_form">
+    <% form_remote_tag :url=> start_path(@game) do %>
+      <%= submit_tag 'start' %>
+    <% end %>
+  </span>
+	
+</div>
+
+<div id = "score">
+	<h1>Home Score: <%= @game.home_score %>   |   Away Score: <%= @game.away_score %></h1>
+</div>
+<div id = "active_players">
+	<table> <!-- outside table -->
+		<tr>
+			<td>
+				<table> <!-- team 1 table -->
+       		<tr>
+						<td>	
+							<div id="home_players"> <!-- home_players -->
+       			    <%= render :partial => 'players/active_player', :collection => @game.active_home_players, :locals => { :my_game => @game } %>
+							</div> <!-- home_players -->
+						</td>
+					</tr>
+        </table> <!-- team 1 table -->
+      </td>
+      <td>
+				<table> <!-- team 2 table -->
+					<tr>
+						<td>
+       				<div id="away_players"> <!-- away_players -->
+								<%= render :partial => 'players/active_player', :collection => @game.active_away_players, :locals => { :my_game => @game } %>
+							</div> <!-- away_players -->
+						</td>
+					</tr>
+        </table> <!-- team 2 table -->
+      </td>
+ 		</tr>
+  </table> <!-- outside table -->
+</div> <!-- active_players -->
+
+<div id="inactive_players"> <!-- Inactive Players -->
+	<table> 									<!-- inactive players table -->
+		<tr>
+			<td>									<!-- start inactive home players -->
+				<table>
+					<tr>
+						<td>
+							<div id="inactive_home_players">
+								<%= render :partial => 'players/inactive_player', :collection => @game.inactive_home_players, :locals => { :my_game => @game } %>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>								<!-- end of inactive home players -->
+			<td>									<!-- start inactive away players -->
+				<table>
+					<tr>
+						<td>
+							<div id="inactive_away_players">
+								<%= render :partial => 'players/inactive_player', :collection => @game.inactive_away_players, :locals => { :my_game => @game } %>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>								<!-- end of inactive away players -->
+		</tr>	
+	</table>								<!-- inactive players table -->
+</div>										<!-- inactive players -->
+
+<ul rows="10"> <!-- GAME LOG -->
+	<div id="game_log" style="position absolute; height:100px; width: 500px; max-height: 100px; overflow: auto; border: 1px solid black">
+		<% if (@game.log_events.length == 0 )%>
+			<li>No Action Yet!! <li>
+		<% else %>
+			<%= render :partial => 'log_events/log_event', :collection => @game.log_events %>
+		<% end %>
+	</div>
+</ul>

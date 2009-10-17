@@ -1,0 +1,3 @@
+page[:clock_time].replace_html "ddd"
+
+#(@game.game_seconds.length/60).to_s +":" + (@game.game_seconds.length%60).to_s
