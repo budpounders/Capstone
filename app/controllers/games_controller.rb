@@ -92,9 +92,9 @@ class GamesController < ApplicationController
 			end
 			i+=1
 	  end
-    
-    
-  
   end
 
+  def new
+    @game=Game.new
+  end
 end

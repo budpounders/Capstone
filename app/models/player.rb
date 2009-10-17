@@ -3,8 +3,5 @@ class Player < ActiveRecord::Base
   
   has_many :stats
   belongs_to :team
-  
-  def to_param
-    "#{id}-#{name.gsub(/\w/, '-').downcase}"
-  end
+
 end

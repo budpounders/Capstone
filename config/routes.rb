@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :homes
+
+  map.resources :players
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -45,6 +49,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :teams, :has_many => :players
   map.resources :games, :has_many => [ :teams, :active_home_players , :inactive_home_players,
    																			:active_away_players , :inactive_away_players, :log_events, :game_seconds ]
+  map.resource :home, :only=>:index
 	map.start 'clock/:start', :controller => 'clock', :action => 'start'
 	map.clock_stop 'clock/:stop', :controller => 'clock', :action => 'stop'
   map.connect ':controller/:action/:id'

@@ -1,0 +1,19 @@
+<% form_for @team do |f| %>
+	<p>
+		Name: <%= f.text_field :name %>
+	</p>
+	<p>
+		Location: <%= f.text_field :location %>
+	</p>
+	<div id="players">
+		<%= render :partial =>'player', :collection=>@team.players %>
+	</div>
+
+	<p>
+		<%= link_to_function "Add A Player" do |page|
+    	page.insert_html :bottom, :players, :partial => 'player', :object => Player.new
+  	end %>
+	</p>
+	<%= f.submit :submit %>
+<% end %>
+	

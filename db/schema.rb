@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090716024054) do
+ActiveRecord::Schema.define(:version => 20090716023834) do
 
   create_table "active_away_players", :force => true do |t|
     t.integer  "game_id"
@@ -58,13 +58,21 @@ ActiveRecord::Schema.define(:version => 20090716024054) do
   end
 
   create_table "game_seconds", :force => true do |t|
+    t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "game_id"
   end
 
-# Could not dump table "games" because of following StandardError
-#   Unknown type 'thread' for column 'clock'
+  create_table "games", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "team1_id",      :default => 0
+    t.integer  "team2_id",      :default => 0
+    t.integer  "table_counter", :default => 0
+    t.integer  "home_score",    :default => 0
+    t.integer  "away_score",    :default => 0
+    t.boolean  "clock_active",  :default => false
+  end
 
   create_table "inactive_away_players", :force => true do |t|
     t.integer  "game_id"

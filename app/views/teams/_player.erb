@@ -1,0 +1,8 @@
+<div class="player_form">
+	
+<% fields_for "team[player_attributes][]", player do |pf| %>
+  <p>
+    Number: <%= pf.text_field :number %> Name: <%= pf.text_field :name %> <%= link_to_function "remove", "$(this).up('.player_form').remove()" %>
+  </p>
+<% end %>
+</div>
