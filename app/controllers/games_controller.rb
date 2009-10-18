@@ -45,20 +45,13 @@ class GamesController < ApplicationController
   
   def show
 		@game = Game.find(params[:id])
-  
-    t1 = Team.find(1)
-    t2 = Team.find(2)
+    
     
     @game.game_seconds.delete_all
     @game.active_home_players.clear
     @game.inactive_home_players.clear
     @game.active_away_players.clear
     @game.inactive_away_players.clear
-    @game.table_counter = 0
-    @game.home_score = 0
-    @game.away_score = 0
-    @game.log_events.clear
-		@game.clock_active=false
     i=0
 
 		t1.players.each do | player |

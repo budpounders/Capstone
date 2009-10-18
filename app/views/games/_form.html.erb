@@ -1,4 +1,14 @@
 <% form_for @game do |f| %>
-	<%= f.text_field :team1_id %>
-	<%= f.text_field :team2_id %>
+	
+	<p>
+		<%= f.label :team1_id, 'Home Team:' %>
+		<%= f.collection_select :team1_id, Team.all, :id, :name, :style=>'float: right' %>
+	</p>
+	<p>
+		<%= f.label :team2_id, 'Away Team:' %>
+		<%= f.collection_select :team2_id, Team.all, :id, :name %>
+	</p>
+	<p><%= f.submit 'Create Game' %></p>
 <% end %>
+
+<p><%= link_to 'Cancel', '/home' %></p>

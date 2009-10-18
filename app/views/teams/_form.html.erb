@@ -1,4 +1,5 @@
 <% form_for @team do |f| %>
+	<%= f.error_messages %>
 	<p>
 		Name: <%= f.text_field :name %>
 	</p>
@@ -16,4 +17,5 @@
 	</p>
 	<%= f.submit :submit %>
 <% end %>
-	
+
+<p><%= link_to 'Return Home', '/home' %></p>

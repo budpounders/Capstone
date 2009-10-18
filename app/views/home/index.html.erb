@@ -1,2 +1,14 @@
-Home
-<%= link_to 'Create New Team', '/teams/new' %>
+<h1>Home</h1>
+
+<ul>
+	<lh style="font-weight: bold">Teams</lh>
+	<% if !@teams.blank? %>
+		<% for team in @teams %>
+    	<li><%= team.name %></li>
+  	<% end %>
+	<% else %>
+  		<li>No Teams Created.</li>
+	<% end %>
+</ul>
+<p><%= link_to 'Create New Team', '/teams/new' %></p>
+<p><%= link_to 'Create New Game', new_game_path %></p>
