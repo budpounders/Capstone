@@ -1,5 +1,4 @@
 class Game < ActiveRecord::Base
-  has_many :teams
   has_many :active_home_players
   has_many :inactive_home_players
   has_many :active_away_players

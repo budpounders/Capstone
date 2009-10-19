@@ -2,7 +2,7 @@
 	
 	<p>
 		<%= f.label :team1_id, 'Home Team:' %>
-		<%= f.collection_select :team1_id, Team.all, :id, :name, :style=>'float: right' %>
+		<%= f.collection_select :team1_id, Team.all, :id, :name %>
 	</p>
 	<p>
 		<%= f.label :team2_id, 'Away Team:' %>
