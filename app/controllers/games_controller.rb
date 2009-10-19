@@ -1,10 +1,10 @@
 class GamesController < ApplicationController
   def create
-    @game = Team.new(params[:game])
+    @game = Game.new(params[:game])
     
     if @game.save
       flash[:notice] = "Successfully created new team."
-      redirect_to "/games/show/#{@game.id}"
+      redirect_to @game
     else
       render :action => 'new'
     end
@@ -13,14 +13,7 @@ class GamesController < ApplicationController
   def show
 		@game = Game.find(params[:id])
     
-=begin   
-    @game.game_seconds.delete_all
-    @game.active_home_players.clear
-    @game.inactive_home_players.clear
-    @game.active_away_players.clear
-    @game.inactive_away_players.clear
     i=0
-=end
 		Team.find(@game.team1_id).players.each do | player |
 		  if i < 5 
 		  	a_new_stat = player.stats.create
