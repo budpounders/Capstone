@@ -2,7 +2,6 @@
  Modify clock to fit your needs
 */
 
-
 var ChessClock = function (player) {
 	this.player = player;
 	this.seconds = 0;
@@ -10,12 +9,10 @@ var ChessClock = function (player) {
 
 	this.start = function () {
 		this.on = 1;
-		document.getElementById(this.player+'_td').style.backgroundColor = 'green';
 	};
 
 	this.stop = function () {
 		this.on = 0;
-		document.getElementById(this.player+'_td').style.backgroundColor = 'white';
 	}
 
 }
@@ -42,7 +39,7 @@ function start() {
 	if (!player1.on) {
 		player1.start();
 	} else {
-		player2.start();
+		player1.stop();
 	}
 
 	tick();
