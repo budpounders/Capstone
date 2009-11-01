@@ -7,10 +7,12 @@
 <div id = <%= active_player.table_loc.to_s %> >
 <table> <!-- player table -->
 	  <tr>
-	    <td><%= Player.find(stat.player_id).name%></td>
+	    <td><%= Player.find(stat.player_id).name %></td>
       <td>
 					<span id="free_throw_form">
-			      <% form_remote_tag :url=> stat_free_throws_path({ :stat_id => stat, :game_id => @game}) do %>
+			      <% form_remote_tag :url=> stat_free_throws_path({ :stat_id => stat, :game_id => @game}), :html=>{:id=>"wazza"} do %>
+			
+							<input id=<%= "#{stat.player.name}" %> type="hidden" name="what"/>
 						  <%= submit_tag '1PT' %>
 				    <% end %>
 					</span>

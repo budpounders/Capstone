@@ -50,8 +50,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :games, :has_many => [ :active_home_players , :inactive_home_players,
    																			:active_away_players , :inactive_away_players, :log_events, :game_seconds ]
   map.resource :home, :only=>:index
-	map.start 'clock/:start', :controller => 'clock', :action => 'start'
-	map.clock_stop 'clock/:stop', :controller => 'clock', :action => 'stop'
+  map.root :controller=>'home'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end

@@ -55,7 +55,6 @@ function reset() {
 
 
 function toTime (secs) {
-	//minutes
 	var hours = Math.floor(secs/3600);
 	var min = Math.floor((secs-hours*3600)/60);
 	var secs = secs - (min*60);

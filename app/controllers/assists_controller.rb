@@ -6,8 +6,9 @@ class AssistsController < ApplicationController
     
     player = Player.find(@stat.player_id)
     @new_log_event = @game.log_events.create
-    time= @game.elapsed_seconds
-    @new_log_event.message = player.number.to_s + ' ' + player.name + " ::: assist ::: #{time}"
+    
+    variable[secs]
+    @new_log_event.message = player.number.to_s + ' ' + player.name + " ::: assist ::: #{secs}"
     @new_log_event.save
     
     respond_to do |format|
