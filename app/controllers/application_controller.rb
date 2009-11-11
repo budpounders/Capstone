@@ -4,7 +4,16 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  
+  protected
+  
+    def grab_time
+      @time=""
+      params.reject { |k, v| k !~ /what(.)/}.each {|k,v| @time= v}
+    end
+  
+    def create_log_event(action)
+      @new_log_event= @game.create_log_event @stat, @time, action
+    end
+    
 end

@@ -3,107 +3,25 @@
 <% active_player.save %>
 <% my_game.table_counter += 1 %>
 <% my_game.save %>
+<% actions=%w(free_throws free_throw_misses two_points two_point_misses three_points three_point_misses assists o_bounds d_bounds steals blocks personal_fouls) %>
+<% labels=%w(1PT 1PTM 2PT 2PTM 3PT 3PTM AST OB DB STL BLCK PF) %>
 
 <div id = <%= active_player.table_loc.to_s %> >
 <table> <!-- player table -->
 	  <tr>
 	    <td><%= Player.find(stat.player_id).name %></td>
-      <td>
-					<span id="free_throw_form">
-			      <% form_remote_tag :url=> stat_free_throws_path({ :stat_id => stat, :game_id => @game}), :html=>{:id=>"wazza"} do %>
-			
-							<input id=<%= "#{stat.player.name}" %> type="hidden" name="what"/>
-						  <%= submit_tag '1PT' %>
-				    <% end %>
-					</span>
-			</td>
-			
-			<td>
-        <span id="free_throw_form">
-          <% form_remote_tag :url=> stat_free_throw_misses_path({ :stat_id => stat, :game_id => @game}) do %>
-            <%= submit_tag '1PTM' %>
-          <% end %>
-        </span>
-			</td>
-    	<td>
-        <span id="free_throw_form">
-          <% form_remote_tag :url=> stat_two_points_path({ :stat_id => stat, :game_id => @game}) do %>
-            <%= submit_tag '2PT' %>
-          <% end %>
-        </span>
-			</td>
-    	<td>
-        <span id="free_throw_form">
-          <% form_remote_tag :url=> stat_two_point_misses_path({ :stat_id => stat, :game_id => @game}) do %>
-            <%= submit_tag '2PTM' %>
-          <% end %>
-        </span>
-		  </td>
-    	<td>
-        <span id="free_throw_form">
-          <% form_remote_tag :url=> stat_three_points_path({ :stat_id => stat, :game_id => @game}) do %>
-            <%= submit_tag '3PT' %>
-          <% end %>
-        </span>
-		  </td>
-   		<td>
-        <span id="free_throw_form">
-          <% form_remote_tag :url=> stat_three_point_misses_path({ :stat_id => stat, :game_id => @game}) do %>
-            <%= submit_tag '3PTM' %>
-          <% end %>
-        </span>
-			</td>
-	  </tr>
-	  
-	  <tr>
-	     <td></td>
-			 <td>
-        <span id="free_throw_form">
-          <% form_remote_tag :url=> stat_assists_path({ :stat_id => stat, :game_id => @game}) do %>
-            <%= submit_tag 'Ast' %>
-          <% end %>
-        </span>
-			</td>
-	    <td>
-	        <span id="free_throw_form">
-	          <% form_remote_tag :url=> stat_o_bounds_path({ :stat_id => stat, :game_id => @game}) do %>
-	            <%= submit_tag 'ORB' %>
-	          <% end %>
-	        </span>
-			</td>
-	    <td>
-	        <span id="free_throw_form">
-	          <% form_remote_tag :url=> stat_d_bounds_path({ :stat_id => stat, :game_id => @game}) do %>
-	            <%= submit_tag 'DRB' %>
-	          <% end %>
-	        </span>
-			</td>
-	    <td>
-	        <span id="free_throw_form">
-	          <% form_remote_tag :url=> stat_steals_path({ :stat_id => stat, :game_id => @game}) do %>
-	            <%= submit_tag 'STL' %>
-	          <% end %>
-	        </span>
-			</td>
-	    <td>
-	        <span id="free_throw_form">
-	          <% form_remote_tag :url=> stat_blocks_path({ :stat_id => stat, :game_id => @game}) do %>
-	            <%= submit_tag 'BLK' %>
-	          <% end %>
-	        </span>
-			</td>
-	    <td>
-	        <span id="free_throw_form">
-	          <% form_remote_tag :url=> stat_personal_fouls_path({ :stat_id => stat, :game_id => @game}) do %>
-	            <%= submit_tag 'PF' %>
-	          <% end %>
-	        </span>
-			</td>
-			<td>
-					<span id="free_throw_form">
-						<%= link_to_remote "Deactivate", :url => [@game, active_player], :method => :delete %>
-					</span>
-			</td>
+			<% actions.zip(labels).each do |action, action_label | %>
+    	  <td>
+						<span id="free_throw_form">
+				      <%  form_remote_tag :url=> "/#{action}/create", :html=>{:class=>'wazza'} do %>
+								<input type="hidden" name=<%= "what#{form_index}" %> value="dog">
+								<input type="hidden" name="stat_id" value=<%=stat.id %> >
+								<input type="hidden" name="game_id" value=<%=@game.id %> >
+							  <%= submit_tag action_label, :name=>"#{get_form_index}" %>
+					    <% end %>
+						</span>
+				</td>
+			<% end %>
 	  </tr>
 
 	</table> <!-- player table -->

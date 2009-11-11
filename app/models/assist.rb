@@ -5,4 +5,5 @@ class Assist < ActiveRecord::Base
   def to_param
     "#{id}-#{name.gsub(/\w/, '-').downcase}"
   end
+    
 end

@@ -29,7 +29,7 @@ var player1 = new ChessClock('clock1');
 
 function tick() {
 	clearTimeout(timeout);
-	timeout = setTimeout(tick, 1000);
+	timeout = setTimeout(tick, 10);
 
 	player1.tick();
 }
@@ -59,6 +59,6 @@ function toTime (secs) {
 	var min = Math.floor((secs-hours*3600)/60);
 	var secs = secs - (min*60);
 
-	return hours + (min<10?':0':':')+min +(secs<10?':0':':') + secs;
+	return (hours<10?'0':'')+hours + (min<10?':0':':')+min +(secs<10?':0':':') + secs;
 }
 

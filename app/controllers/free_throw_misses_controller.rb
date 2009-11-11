@@ -1,6 +1,7 @@
 class FreeThrowMissesController < ApplicationController
   def create
     @stat = Stat.find(params[:stat_id])
+
     @game = Game.find(params[:game_id])
     @stat.free_throw_misses.create
     
