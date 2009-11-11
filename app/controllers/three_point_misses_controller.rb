@@ -1,13 +1,18 @@
 class ThreePointMissesController < ApplicationController
+  before_filter :grab_time, :only=>:create
+  
   def create
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
+
     @stat.three_point_misses.create
-    
-    player = Player.find(@stat.player_id)
-    @new_log_event = @game.log_events.create
-    @new_log_event.message = player.number.to_s + ' ' + player.name + ' misses a 3'
-    @new_log_event.save
+    record
   end
+  
+  protected
+      
+    def record
+      create_log_event :three_point_miss
+    end
 
 end

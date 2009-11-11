@@ -28,6 +28,7 @@ class Game < ActiveRecord::Base
 
   def create_log_event(a_stat, time, action)
     log_events.create (:message=>"#{a_stat.player.number} #{a_stat.player.name} #{LOG_MESSAGES[action]} ||| #{time}")
+    
   end
   
   def to_param
