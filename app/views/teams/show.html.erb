@@ -1,5 +1,14 @@
+<h1 style="display:inline"><%= @team.name %></h1>
+<h2 style="display:inline"></h2>
+
+<table>
+	<tr><%= render_stat_headers %></tr>
+</table>
+
 <ul id = "team list">
 <% @team.players.each do | player | %>
   <li> <%= link_to player.name, player %></li>
 <% end %>
 </ul>
+
+<%= link_to 'Home', root_url %>

@@ -8,13 +8,12 @@ class GamesController < ApplicationController
       i=0 
 
   		  Team.find(@game.team1_id).players.each do | player |
+    		  a_new_stat = player.stats.create(:game_id => @game.id)
     		  if i < 5 
-    		  	a_new_stat = player.stats.create
     				g = @game.active_home_players.create
     				g.stat_id = a_new_stat.id
     				g.save
     		  else
-    		  	a_new_stat = player.stats.create
     				g = @game.inactive_home_players.create
     				g.stat_id = a_new_stat.id
     				g.save				
@@ -25,13 +24,12 @@ class GamesController < ApplicationController
     	  i=0
 
     	  Team.find(@game.team2_id).players.each do | player |
+    	  	a_new_stat = player.stats.create(:game_id => @game.id)
     		  if i < 5 
-    		  	a_new_stat = player.stats.create
     				g = @game.active_away_players.create
     				g.stat_id = a_new_stat.id
     				g.save
     		  else
-    		  	a_new_stat = player.stats.create
     				g = @game.inactive_away_players.create
     				g.stat_id = a_new_stat.id
     				g.save				

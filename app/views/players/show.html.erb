@@ -1,8 +1,21 @@
-<h1><%= "#{@player.number}. #{@player.name}" %></h1>
+<%= stylesheet_link_tag 'stat_tables', :cache => true %>
+
+<h1 style="display: inline"><%= @player.team.name %></h1>
+<h2 style="display: inline; margin-left: 15px; color: grey"><%= "#{@player.number}. #{@player.name}" %></h2>
 
 <div>
-	<table border="">
-		<tr><%= render_stat_headers %></tr>
-		<tr><td>Data</td></tr>
+	
+	<table>
+		<tr><%= render_avg_headers %></tr>
+		<%= render :partial => 'avg_summary', :object=>@player.avg_stats %>
 	</table>
+	
+	<table>
+		<tr><%= render_stat_headers %></tr>
+		<% @player.stats.each do |stat| %>
+      <%= render :partial => 'game_summary', :object=>stat.summary, :locals=>{:vs=>stat.game.opponent_of(stat.player.team).name } %>
+    <% end %>
+    <%= render :partial => 'game_summary', :object=>@player.total_stats, :locals=>{:vs=>'Total' } %>
+	</table>
+	<%= link_to 'Back', @player.team %>
 </div>

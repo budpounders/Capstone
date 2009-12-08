@@ -4,7 +4,7 @@ class ThreePointsController < ApplicationController
   def create
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
-    @stat.free_throws.create
+    @stat.three_points.create
 
     @game.update_score @stat.player.team_id, 3
     record

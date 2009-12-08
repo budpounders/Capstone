@@ -3,8 +3,7 @@ class Game < ActiveRecord::Base
   has_many :inactive_home_players
   has_many :active_away_players
   has_many :inactive_away_players
-  has_many :stats, :through => :active_home_players
-  has_many :stats, :through => :active_away_players
+  has_many :stats
   has_many :log_events
   
   LOG_MESSAGES={:free_throw=>"scores a free throw",
@@ -34,9 +33,38 @@ class Game < ActiveRecord::Base
     
   end
   
-  def to_param
-    #"#{id}-#{name.gsub(/\w/, '-').downcase}"
-    "#{id}"
+  def winner
+    if home_score > away_score
+      return team1_id
+    elsif away_score > home_score
+      return team2_id
+    else
+      return 'tie'
+    end
   end
   
+  def score_for_team(team)
+    if team.id == team1_id
+      home_score
+    elsif team.id == team2_id
+      away_score
+    else
+      -1
+    end
+  end
+
+  def score_for_other_team(team)
+    score_for_team( opponent_of(team) )
+  end
+  
+  def opponent_of(team)
+    team.id == team1_id ? Team.find(team2_id) : Team.find(team1_id)
+  end
+
+  def stats_for_team(team)
+    stats.reject do |stat|
+      stat.player.team_id != team.id
+    end
+  end
+
 end

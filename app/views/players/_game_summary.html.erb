@@ -1,0 +1,9 @@
+<tr>
+	<td><%= vs %></td>
+	<td><%= "#{game_summary[0]} / #{game_summary[1]} " %></td>
+	<td><%= "#{game_summary[2]} / #{game_summary[3]} " %></td>
+	<td><%= "#{game_summary[4]} / #{game_summary[5]} " %></td>
+	<%- 6.upto(12) do |i| -%>
+		<td><%= game_summary[i] %></td>
+	<%- end -%>
+</tr>
