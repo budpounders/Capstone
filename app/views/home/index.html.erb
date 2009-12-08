@@ -4,7 +4,7 @@
 	<lh style="font-weight: bold">Teams</lh>
 	<% if !@teams.blank? %>
 		<% for team in @teams %>
-    	<li><%= team.name %></li>
+    	<li><%= link_to team.name, team %></li>
   	<% end %>
 	<% else %>
   		<li>No Teams Created.</li>

@@ -44,7 +44,7 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing the them or commenting them out if you're using named routes and resources.
   map.resources :stats, :has_many => [ :free_throws, :free_throw_misses, :two_points, :two_point_misses, 
 																		   :three_points, :three_point_misses, :assists, :o_bounds, :d_bounds,
-																			 :steals, :blocks, :personal_fouls ]
+																			 :steals, :blocks, :turn_overs, :personal_fouls ]
   map.resources :players , :has_many => :stats
   map.resources :teams, :has_many => :players
   map.resources :games, :has_many => [ :active_home_players , :inactive_home_players,

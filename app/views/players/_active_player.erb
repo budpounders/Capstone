@@ -3,8 +3,8 @@
 <% active_player.save %>
 <% my_game.table_counter += 1 %>
 <% my_game.save %>
-<% actions=%w(free_throws free_throw_misses two_points two_point_misses three_points three_point_misses assists o_bounds d_bounds steals blocks personal_fouls) %>
-<% labels=%w(1PT 1PTM 2PT 2PTM 3PT 3PTM AST OB DB STL BLCK PF) %>
+<% actions=%w(free_throws free_throw_misses two_points two_point_misses three_points three_point_misses assists o_bounds d_bounds steals blocks turn_overs personal_fouls) %>
+<% labels=%w(1PT 1PTM 2PT 2PTM 3PT 3PTM AST OB DB STL BLCK TO PF) %>
 
 <div id = <%= active_player.table_loc.to_s %> >
 <table> <!-- player table -->

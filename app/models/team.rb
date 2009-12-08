@@ -9,7 +9,4 @@ class Team < ActiveRecord::Base
    end
  end
  
-  def to_param
-    "#{id}-#{name.gsub(/\w/, '-').downcase}"
-  end
 end

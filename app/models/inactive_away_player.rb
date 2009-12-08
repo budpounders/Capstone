@@ -1,8 +1,5 @@
 class InactiveAwayPlayer < ActiveRecord::Base
 	belongs_to :game
+	belongs_to :stat
 	
-	def to_param
-    #"#{id}-#{name.gsub(/\w/, '-').downcase}"
-    "#{id}"
-  end
 end

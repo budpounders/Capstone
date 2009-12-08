@@ -1,5 +1,5 @@
 <ul id = "team list">
 <% @team.players.each do | player | %>
-  <li> <%= player.name %></li>
+  <li> <%= link_to player.name, player %></li>
 <% end %>
 </ul>

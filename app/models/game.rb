@@ -3,6 +3,8 @@ class Game < ActiveRecord::Base
   has_many :inactive_home_players
   has_many :active_away_players
   has_many :inactive_away_players
+  has_many :stats, :through => :active_home_players
+  has_many :stats, :through => :active_away_players
   has_many :log_events
   
   LOG_MESSAGES={:free_throw=>"scores a free throw",
@@ -16,6 +18,7 @@ class Game < ActiveRecord::Base
                 :defensive_rebound=>"registers a defensive rebound",
                 :steal=>"registerse a steal",
                 :block=>"registers a block",
+                :turn_over=>"creates a turnover",
                 :personal_foul=>"registers a personal foul"}
   
   def update_score(t_id, inc)
