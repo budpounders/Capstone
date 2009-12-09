@@ -5,14 +5,14 @@ class BlocksController < ApplicationController
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
 
-    @stat.blocks.create
-    record
+    s = @stat.blocks.create
+    record(s)
   end
   
   protected
       
-    def record
-      create_log_event :block
+    def record(s)
+      create_log_event :block, s
     end
 
 end

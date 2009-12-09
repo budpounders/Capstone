@@ -5,14 +5,14 @@ class ThreePointMissesController < ApplicationController
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
 
-    @stat.three_point_misses.create
-    record
+    s = @stat.three_point_misses.create
+    record(s)
   end
   
   protected
       
-    def record
-      create_log_event :three_point_miss
+    def record(s)
+      create_log_event :three_point_miss, s
     end
 
 end

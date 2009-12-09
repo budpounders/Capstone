@@ -5,8 +5,8 @@ class TurnOversController < ApplicationController
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
 
-    @stat.turn_overs.create
-    record
+    s = @stat.turn_overs.create
+    record(s)
     
     respond_to do |format|
       format.js
@@ -15,7 +15,7 @@ class TurnOversController < ApplicationController
   
   protected
       
-    def record
-      create_log_event :turn_over
+    def record(s)
+      create_log_event :turn_over, s
     end
 end

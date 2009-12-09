@@ -5,14 +5,14 @@ class OBoundsController < ApplicationController
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
 
-    @stat.o_bounds.create
-    record
+    s = @stat.o_bounds.create
+    record(s)
   end
   
   protected
       
-    def record
-      create_log_event :offensive_rebound
+    def record(s)
+      create_log_event :offensive_rebound, s
     end
 
 end

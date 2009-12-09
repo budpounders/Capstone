@@ -6,17 +6,12 @@ class AssistsController < ApplicationController
     @game = Game.find(params[:game_id])
 
     s = @stat.assists.create
-    debugger
     record(s)
-  end
-  
-  def destroy
-    
   end
   
   protected
       
     def record(s)
-      create_log_eventa :assist, s
+      create_log_event :assist, s
     end
 end

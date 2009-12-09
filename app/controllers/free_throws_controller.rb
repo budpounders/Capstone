@@ -5,15 +5,15 @@ class FreeThrowsController < ApplicationController
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
 
-    @stat.free_throws.create
+    s = @stat.free_throws.create
     @game.update_score @stat.player.team_id, 1
-    record
+    record(s)
   end
   
   protected
       
-    def record
-      create_log_event :free_throw
+    def record(s)
+      create_log_event :free_throw, s
     end
   
 end

@@ -11,12 +11,8 @@ class ApplicationController < ActionController::Base
       @time=""
       params.reject { |k, v| k !~ /what(.)/}.each {|k,v| @time= v}
     end
-  
-    def create_log_event(action)
-      @new_log_event= @game.create_log_event @stat, @time, action
-    end
     
-    def create_log_eventa(action, s)
+    def create_log_event(action, s)
       @new_log_event= @game.create_log_event @stat, @time, action, s
     end
     

@@ -1,5 +1,6 @@
 class LogEvent < ActiveRecord::Base
   belongs_to :game
+  belongs_to :team
 
   before_destroy :kill_stat
   
@@ -16,10 +17,13 @@ class LogEvent < ActiveRecord::Base
                 :block=>"Block",
                 :turn_over=>"TurnOver",
                 :personal_foul=>"PersonalFoul"}
+                
+  def stat
+    eval "#{FIND_STRINGS[action.to_sym]}.find(#{stat_id})"
+  end
   
   protected
     def kill_stat
-      logger.debug "\n\n\n" + "#{FIND_STRINGS[action]}.find(#{stat_id}).destroy" + "\n\n\n"
       eval "#{FIND_STRINGS[action.to_sym]}.find(#{stat_id}).destroy"
     end
 end

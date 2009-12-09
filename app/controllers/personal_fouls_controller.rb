@@ -5,14 +5,14 @@ class PersonalFoulsController < ApplicationController
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
 
-    @stat.personal_fouls.create
-    record
+    s = @stat.personal_fouls.create
+    record(s)
   end
   
   protected
       
-    def record
-      create_log_event :personal_foul
+    def record(s)
+      create_log_event :personal_foul, s
     end
 
 end

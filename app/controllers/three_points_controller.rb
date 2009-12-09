@@ -4,10 +4,10 @@ class ThreePointsController < ApplicationController
   def create
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
-    @stat.three_points.create
+    s = @stat.three_points.create
 
     @game.update_score @stat.player.team_id, 3
-    record
+    record(s)
       
     respond_to do |format|
       format.html
@@ -17,7 +17,7 @@ class ThreePointsController < ApplicationController
 
   protected
 
-    def record
-      create_log_event :three_point    
+    def record(s)
+      create_log_event :three_point, s
     end
 end

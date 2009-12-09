@@ -5,14 +5,14 @@ class DBoundsController < ApplicationController
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
 
-    @stat.d_bounds.create
-    record
+    s = @stat.d_bounds.create
+    record(s)
   end
   
   protected
       
-    def record
-      create_log_event :defensive_rebound
+    def record(s)
+      create_log_event :defensive_rebound, s
     end
 
 end

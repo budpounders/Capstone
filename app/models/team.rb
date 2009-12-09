@@ -2,6 +2,7 @@ class Team < ActiveRecord::Base
   validates_presence_of :name, :location
  
   has_many :players
+  has_many :log_events
   after_update :save_players
 
   def player_attributes=(player_attributes)

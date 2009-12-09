@@ -5,15 +5,15 @@ class TwoPointsController < ApplicationController
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
 
-    @stat.two_points.create
+    s = @stat.two_points.create
     @game.update_score @stat.player.team_id, 2
-    record
+    record(s)
   end
   
   protected
       
-    def record
-      create_log_event :two_point
+    def record(s)
+      create_log_event :two_point, s
     end
 
 end

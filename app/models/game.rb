@@ -29,7 +29,7 @@ class Game < ActiveRecord::Base
   end
 
   def create_log_event(a_stat, time, action, s)
-    log_events.create (:message=>"#{a_stat.player.number} #{a_stat.player.name} #{LOG_MESSAGES[action]} ||| #{time}", :stat_id=>s.id, :action=>action.to_s)
+    log_events.create (:message=>"#{a_stat.player.number} #{a_stat.player.name} #{LOG_MESSAGES[action]} ||| #{time}", :stat_id=>s.id, :action=>action.to_s, :team_id=>a_stat.player.team_id)
     
   end
   
@@ -80,4 +80,13 @@ class Game < ActiveRecord::Base
       
     total
   end
+
+  def update_score_for_team(team, inc)
+    if team.id == team1_id
+      update_attribute :home_score, home_score + inc
+    elsif team.id == team2_id
+      update_attribute :home_score, away_score + inc
+    end
+  end
+  
 end

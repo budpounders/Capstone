@@ -5,13 +5,13 @@ class StealsController < ApplicationController
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
 
-    @stat.steals.create
-    record
+    s = @stat.steals.create
+    record(s)
   end
   
   protected
       
-    def record
-      create_log_event :steal
+    def record(s)
+      create_log_event :steal, s
     end
 end
