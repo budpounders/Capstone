@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
       @new_log_event= @game.create_log_event @stat, @time, action
     end
     
+    def create_log_eventa(action, s)
+      @new_log_event= @game.create_log_event @stat, @time, action, s
+    end
+    
 end

@@ -26,19 +26,26 @@ ChessClock.prototype.tick = function () {
 
 var timeout;
 var player1 = new ChessClock('clock1');
+var clock_enabled=true;
 
 function tick() {
-	clearTimeout(timeout);
-	timeout = setTimeout(tick, 10);
+  if (player1.seconds==1200) {clearTimeout(timeout); clock_enabled=false}
+  if(clock_enabled)
+	{
+	  clearTimeout(timeout);
+  	timeout = setTimeout(tick, 1000);
 
-	player1.tick();
+  	player1.tick();
+  }
 }
 
 function start() {
 
 	if (!player1.on) {
 		player1.start();
-	} else {
+	} 
+	else {
+	  clearTimeout(timeout);
 		player1.stop();
 	}
 
@@ -49,16 +56,18 @@ function reset() {
 	clearTimeout(timeout);
 	player1.stop();
 	player1.seconds = 0;
-
+  clock_enabled=true;
+  
 	document.getElementById('clock1').value=0;
 }
 
 
 function toTime (secs) {
-	var hours = Math.floor(secs/3600);
-	var min = Math.floor((secs-hours*3600)/60);
-	var secs = Math.floor(secs - (min*60));
-
-	return (hours<10?'0':'')+hours + (min<10?':0':':')+min +(secs<10?':0':':') + secs;
+   //minutes
+  var hours = Math.floor(secs/3600);
+  var min = Math.floor((secs-hours*3600)/60);
+  var secs = secs - (min*60);
+  
+  return (min<10?'0':'')+min +(secs<10?':0':':') + secs;
 }
 

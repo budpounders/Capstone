@@ -45,11 +45,20 @@ class GamesController < ApplicationController
   
   def show
 		@game = Game.find(params[:id])
-    
-    
   end
 
   def new
     @game=Game.new
   end
+  
+  def update
+    @game = Game.find(params[:id])
+    if @game.update_attributes(params[:game])
+      flash[:message] = 'Game Successfully Saved'
+      redirect_to root_url
+    else
+      render :action=>'show'
+    end
+  end
 end
+

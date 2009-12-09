@@ -5,13 +5,18 @@ class AssistsController < ApplicationController
     @stat = Stat.find(params[:stat_id])
     @game = Game.find(params[:game_id])
 
-    @stat.assists.create
-    record
+    s = @stat.assists.create
+    debugger
+    record(s)
+  end
+  
+  def destroy
+    
   end
   
   protected
       
-    def record
-      create_log_event :assist
+    def record(s)
+      create_log_eventa :assist, s
     end
 end

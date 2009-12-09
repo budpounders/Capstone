@@ -28,8 +28,8 @@ class Game < ActiveRecord::Base
     end
   end
 
-  def create_log_event(a_stat, time, action)
-    log_events.create (:message=>"#{a_stat.player.number} #{a_stat.player.name} #{LOG_MESSAGES[action]} ||| #{time}")
+  def create_log_event(a_stat, time, action, s)
+    log_events.create (:message=>"#{a_stat.player.number} #{a_stat.player.name} #{LOG_MESSAGES[action]} ||| #{time}", :stat_id=>s.id, :action=>action.to_s)
     
   end
   

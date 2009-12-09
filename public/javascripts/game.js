@@ -1,6 +1,9 @@
 document.observe("dom:loaded", handleStuff )
 
 function handleStuff(event) {
+  player1.seconds = parseInt($('game_time').value)-1;
+  start();start();
+  
   var player_forms = $$('form.wazza')
   
   player_forms.each( function (f, i) {
