@@ -1,8 +1,15 @@
 <div class="player_form">
-	
-<% fields_for "team[player_attributes][]", player do |pf| %>
-  <p>
-    Number: <%= pf.text_field :number %> Name: <%= pf.text_field :name %> <%= link_to_function "remove", "$(this).up('.player_form').remove()" %>
-  </p>
-<% end %>
+	<% fields_for "team[player_attributes][]", player do |pf| %>
+	  <p>
+	    Number: <%= pf.text_field :number, :index=>nil %> Name: <%= pf.text_field :name, :index=>nil %> 
+			
+			<%- if player.new_record? -%>
+				<%= link_to_function "remove", "$(this).up('.player_form').remove()" %>
+			<%- else -%>
+				<%= link_to_function "remove", "mark_for_destroy(this)" %>
+				<%= pf.hidden_field :id, :index=>nil %>
+				<%= pf.hidden_field :should_destroy, :index => nil,:class=>'should_destroy' %>
+			<%- end -%>
+	  </p>
+	<% end %>
 </div>

@@ -1,0 +1,5 @@
+<%= javascript_include_tag 'team', :cache => true %>
+
+<%= render :partial => 'team_header' %>
+<%= render :partial => 'form', :object=>'Update Team' %>
+<%= link_to 'Back', @team %>

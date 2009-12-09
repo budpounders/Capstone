@@ -1,14 +1,16 @@
-<h1 style="display:inline"><%= @team.name %></h1>
-<h2 style="display:inline"><%= record_string %></h2>
+<%= stylesheet_link_tag 'stat_tables', :cache => true %>
+
+<%= render :partial => 'team_header' %>
+
+<%= link_to '(Edit)', edit_team_path(@team) %> <%= link_to '(Delete)', team_path, :method=>:delete %>
 
 <table>
 	<tr><%= render_avg_headers %></tr>
-	<%-  -%>
+	<%= render :partial => 'avg_summary', :object => @team.avg_stats, :locals=>{:pts=>@team.avg_points} %>
 	<tr>
 		<td></td>
 	</tr>
 </table>
-
 
 <table>
 	<tr><%= render_stat_headers %></tr>

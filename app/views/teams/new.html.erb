@@ -1,1 +1,5 @@
-<%= render :partial=>'form' %>	
+<%= javascript_include_tag 'team', :cache => true %>
+
+<%= render :partial=>'form', :object =>'Create Team' %>	
+
+<%= link_to 'Back', root_url %>

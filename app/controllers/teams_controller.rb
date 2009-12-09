@@ -16,8 +16,30 @@ class TeamsController < ApplicationController
   
   def new
     @team=Team.new
-
-    
   end
-
+  
+  def edit
+    @team = Team.find(params[:id])
+  end
+  
+  def update
+    @team = Team.find(params[:id])
+  
+    if @team.update_attributes(params[:team])
+      flash[:notice] = 'Model was successfully updated.'
+      redirect_to @team
+    else
+      render :action => "edit"
+    end
+  end
+  
+  def destroy
+    @team = Team.find(params[:id])
+    @team.destroy
+    
+    redirect_to root_url
+  end
 end
+
+
+

@@ -5,6 +5,9 @@ class Player < ActiveRecord::Base
   has_many :games, :through=>:stats
   belongs_to :team
   
+  attr_accessor :should_destroy
+  
+  
   def total_stats
 
     free_pts = 0
@@ -67,17 +70,23 @@ class Player < ActiveRecord::Base
     
     game_count = stats.count
     
-    free_pts /= game_count
-    two_pts /= game_count
-    three_pts /= game_count
-    assists /= game_count
-    blocks /= game_count
-    steals /= game_count
-    obounds /= game_count
-    dbounds /= game_count
-    to /= game_count
-    fouls /= game_count
+    if game_count > 0
+      free_pts /= game_count
+      two_pts /= game_count
+      three_pts /= game_count
+      assists /= game_count
+      blocks /= game_count
+      steals /= game_count
+      obounds /= game_count
+      dbounds /= game_count
+      to /= game_count
+      fouls /= game_count
+    end
   
     [free_pts + two_pts * 2 + three_pts * 3, assists, blocks, steals, obounds, dbounds, to, fouls]
+  end
+
+  def should_destroy?
+    should_destroy.to_i == 1
   end
 end
