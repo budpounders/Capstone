@@ -67,4 +67,17 @@ class Game < ActiveRecord::Base
     end
   end
 
+  def total_summary_for_team(team)
+    
+    total = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    
+    stats_for_team(team).each do |stat|
+      stat.summary.each_with_index do |s, i|
+        puts "#{i}. #{total[i]}"
+        total[i] += s
+      end
+    end
+      
+    total
+  end
 end

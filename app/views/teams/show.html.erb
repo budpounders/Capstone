@@ -1,9 +1,19 @@
 <h1 style="display:inline"><%= @team.name %></h1>
-<h2 style="display:inline"></h2>
+<h2 style="display:inline"><%= record_string %></h2>
+
+<table>
+	<tr><%= render_avg_headers %></tr>
+	<%-  -%>
+	<tr>
+		<td></td>
+	</tr>
+</table>
+
 
 <table>
 	<tr><%= render_stat_headers %></tr>
-	
+	<%= render :partial => 'stat_rows' %>
+	<%= render :partial => 'game_summary', :object=>@team.total_stats, :locals=>{:win_str=> 'Total', :score_str=> ''} %>
 </table>
 
 <ul id = "team list">

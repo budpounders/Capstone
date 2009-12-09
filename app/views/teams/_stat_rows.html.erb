@@ -1,0 +1,3 @@
+<% @team.games.each do |g| %>
+  <%= render :partial => 'game_summary', :object=>g.total_summary_for_team(@team), :locals=>{:win_str=> win_string(g.winner), :score_str=> score_string(g)} %>
+<% end %>

@@ -14,13 +14,5 @@ module PlayersHelper
   def render_avg_headers
     render :partial=>'table_header', :collection => AVG_HEADERS
   end
-  
-  def win_string(winner)
-    case winner
-      when @player.team_id then "Win"
-      when 'tie' then 'Tie'
-      else "Loss" 
-    end
-  end
 
 end
