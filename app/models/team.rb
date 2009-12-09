@@ -44,10 +44,6 @@ class Team < ActiveRecord::Base
    [free_pts, free_pt_misses+free_pts, two_pts, two_pt_misses + two_pts, three_pts, three_pt_misses + three_pts, assists, blocks, steals, obounds, dbounds, to, fouls]
  end
  
- def 
-  
- end
- 
  def games
    Game.find_all_by_team1_id(self.id) + Game.find_all_by_team2_id(self.id)
  end
