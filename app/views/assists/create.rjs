@@ -1,3 +1,1 @@
 page.insert_html :top, :game_log, :partial => 'log_events/log_event', :object => @new_log_event
-page.alert "#{@new_log_event.id}"
-page.alert "#{@new_log_event.stat_id}"

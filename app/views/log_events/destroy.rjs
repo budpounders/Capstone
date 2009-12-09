@@ -1,2 +1,1 @@
-<<'alert('')'
-page[@lg].toggle
+page[@lg.id.to_s].toggle
