@@ -11,7 +11,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :games, :has_many => [ :active_home_players , :inactive_home_players,
    																			:active_away_players , :inactive_away_players, :log_events, :game_seconds ]
   map.resource :home, :only=>:index
-  map.root :controller=>'home'
+  map.root :controller=>'login'
+  map.resources :login
   
   map.resource :assists, :only=>:destroy
   map.resource :log_events, :only=>:destroy

@@ -13,7 +13,7 @@
 			<% actions.zip(labels).each do |action, action_label | %>
     	  <td>
 						<span id="free_throw_form">
-				      <% form_remote_tag :url=> "/#{action}/create", :html=>{:class=>'wazza', :onsubmit=>'if(!player1.on) {return false}'} do %>
+				      <% form_remote_tag :url=> "/#{action}/create", :html=>{:class=>'wazza', :onsubmit=>'if(!on) {return false}'} do %>
 								<input type="hidden" name=<%= "what#{form_index}" %> value="dog">
 								<input type="hidden" name="stat_id" value=<%=stat.id %> >
 								<input type="hidden" name="game_id" value=<%=@game.id %> >

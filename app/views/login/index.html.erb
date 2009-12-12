@@ -1,0 +1,6 @@
+<p><%= flash[:message] %></p>
+<% form_tag login_index_path, :method=>:put do %>
+  <%= label_tag :login, "Login" %><%= text_field_tag :login %>
+	<%= label_tag :password, "Password" %><%= password_field_tag :password %>
+	<%= submit_tag 'Login' %>
+<% end -%>

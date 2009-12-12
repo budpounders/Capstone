@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091209103141) do
+ActiveRecord::Schema.define(:version => 20091212192753) do
 
   create_table "active_away_players", :force => true do |t|
     t.integer  "game_id"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20091209103141) do
     t.integer  "home_score",    :default => 0
     t.integer  "away_score",    :default => 0
     t.boolean  "clock_active",  :default => false
-    t.integer  "time",          :default => 0
+    t.string   "time",          :default => "0"
   end
 
   create_table "inactive_away_players", :force => true do |t|
