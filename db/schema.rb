@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20091212192753) do
     t.integer  "home_score",    :default => 0
     t.integer  "away_score",    :default => 0
     t.boolean  "clock_active",  :default => false
-    t.string   "time",          :default => "0"
+    t.string   "time",          :default => "20:00"
   end
 
   create_table "inactive_away_players", :force => true do |t|

@@ -1,6 +1,6 @@
 class ChangeGameTimeType < ActiveRecord::Migration
   def self.up
-    change_column :games, :time, :string
+    change_column :games, :time, :string, :default=>'20:00'
   end
 
   def self.down

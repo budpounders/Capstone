@@ -89,4 +89,11 @@ class Game < ActiveRecord::Base
     end
   end
   
+  def home_team
+    Team.find(team1_id)
+  end
+  
+  def away_team
+    Team.find(team2_id)
+  end
 end

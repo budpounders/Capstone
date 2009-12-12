@@ -1,14 +1,8 @@
 <% form_for @game, :url=>{:controller=>'games', :action=>'create'} do |f| %>
-	
-	<p>
-		<%= f.label :team1_id, 'Home Team:' %>
-		<%= f.collection_select :team1_id, Team.all, :id, :name %>
-	</p>
-	<p>
-		<%= f.label :team2_id, 'Away Team:' %>
-		<%= f.collection_select :team2_id, Team.all, :id, :name %>
-	</p>
-	<p><%= f.submit 'Create Game' %></p>
+	<%= f.label :team1_id, 'Home:' %>
+	<%= f.collection_select :team1_id, Team.all, :id, :name %>
+	<%= f.label :team2_id, 'Away:' %>
+	<%= f.collection_select :team2_id, Team.all, :id, :name %>	
+	<%= f.submit 'Create Game' %>
+	<%= link_to 'Cancel', '/home' %>
 <% end %>
-
-<p><%= link_to 'Cancel', '/home' %></p>

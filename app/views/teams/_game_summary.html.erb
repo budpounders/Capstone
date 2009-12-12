@@ -1,4 +1,6 @@
-<tr>
+<%  win_str== 'Win' ? win_style='#D0FFC2' : win_style='#FFC7C2' %>
+
+<tr style= <%= "\"background-color: #{win_style};\"" %> >
 	<td><%= win_str %></td>
 	<td><%= score_str %></td>
 	<td><%= "#{game_summary[0]} / #{game_summary[1]} " %></td>

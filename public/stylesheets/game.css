@@ -1,3 +1,21 @@
 #home_players table, #away_players table {
   float: right;
 }
+
+#score {
+  background-color: #A6FCF9;
+  width: 600px;
+}
+
+#clockDiv { border: 2px solid #D899FF; width: 150px; margin-bottom: 20px; text-align: center; background-color: #EAC9FF;}
+
+#active { background-color: #D7FFCA; border: 2px solid #90DF75; }
+
+#inactive { background-color: #FFBABA; border: 2px solid #FF9292 }
+
+#inactive, #active { margin-bottom: 20px; }
+#inactive td table td { background-color: #FAE3E3; border-right: 1px solid FAE3E3; }
+
+#active table, #inactive table { border-bottom: 2px solid #999; border-right: 2px solid #999;}
+
+#active td table td { background-color: #ECFAE3 }

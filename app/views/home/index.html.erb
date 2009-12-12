@@ -1,14 +1,69 @@
+
+<STYLE TYPE="text/css">
+	<-- 
+	#teamList li { 
+		list-style-type: none;
+		margin-top: 30px;
+		width: 150px;
+	}
+
+	#teamList { background-color: #FFE09E; border: 2px solid #FFBA9E; width: 300px; }
+
+	a { 
+		background-color: #E5FF7B;
+
+		margin: 15px;
+		height: 12px;	
+	}
+
+	#teamList a { background-color: #D7FFCA;}
+
+	ul {
+		background-color: #FFE09E;
+	}
+	
+	h2 {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	div {	
+		padding-left: 10px;
+		padding-bottom: 10px;
+	}
+	
+	#gamesDiv, #gamesDiv h2 {	
+		background-color: #BBFFFF;
+		width: 300px;
+	 }
+
+	#gamesDiv {border: 2px solid #9EA6FF;}
+	
+	-->
+</style>
+
+
 <h1>Home</h1>
 
-<ul>
-	<lh style="font-weight: bold">Teams</lh>
-	<% if !@teams.blank? %>
-		<% for team in @teams %>
-    	<li><%= link_to team.name, team %></li>
-  	<% end %>
-	<% else %>
-  		<li>No Teams Created.</li>
-	<% end %>
-</ul>
-<p><%= link_to 'Create New Team', '/teams/new' %></p>
-<p><%= link_to 'Create New Game', new_game_path %></p>
+<div id='teamList'>
+	<h2>Teams</h2>
+		<%= link_to 'Enter a team', new_team_path %>
+		<ul>
+		<% if !@teams.blank? %>
+			<% for team in @teams %>
+	    	<li><%= link_to team.name, team %></li>
+	  	<% end %>
+		<% else %>
+	  		<li>No Teams Created.</li>
+		<% end %>
+	</ul>
+</div>
+<div id="gamesDiv">
+	<h2>Games</h2>
+	<p><%= link_to 'Create New Game', new_game_path %></p>
+	<h3 style="display: inline">Latest Game:</h3><%= link_to "#{@last_game.home_team.name} vs. #{@last_game.away_team.name}", @last_game %>
+</div>
+
+

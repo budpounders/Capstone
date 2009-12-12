@@ -4,15 +4,16 @@
 
 <%= link_to '(Edit)', edit_team_path(@team) %> <%= link_to '(Delete)', team_path, :method=>:delete %>
 
-<table>
-	<tr><%= render_avg_headers %></tr>
-	<%= render :partial => 'avg_summary', :object => @team.avg_stats, :locals=>{:pts=>@team.avg_points} %>
-	<tr>
-		<td></td>
-	</tr>
-</table>
+<div id='avg' style='background-color: #FFF397; width: 600px; border: 2px solid #FFE93F; margin-bottom: 20px'>
+	<table>
+		<tr><%= render_avg_headers %></tr>
+		<%= render :partial => 'avg_summary', :object => @team.avg_stats, :locals=>{:pts=>@team.avg_points} %>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
 
-<table>
+</div><table>
 	<tr><%= render_stat_headers %></tr>
 	<%= render :partial => 'stat_rows' %>
 	<%= render :partial => 'game_summary', :object=>@team.total_stats, :locals=>{:win_str=> 'Total', :score_str=> ''} %>
